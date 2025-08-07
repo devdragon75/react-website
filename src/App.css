@@ -1,38 +1,189 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Performance Optimizations */
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Image Protection - Prevent Downloading */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  /* Prevent image downloading */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Prevent right-click context menu */
+img {
+  -webkit-context-menu: none;
+  -moz-context-menu: none;
+  -ms-context-menu: none;
+  context-menu: none;
+}
+
+/* Prevent text selection on images */
+img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Disable drag and drop for images */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Prevent image saving via keyboard shortcuts */
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimize floating balls */
+.floating-ball {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Custom styles that can't be easily converted to Tailwind */
+.full-bleed-section {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+/* Main button style */
+.main-btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.15rem;
+  background: linear-gradient(90deg, #f05a27 60%, #013d58 100%);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  transition: transform 0.18s cubic-bezier(0.4,0,0.2,1), box-shadow 0.18s cubic-bezier(0.4,0,0.2,1);
 }
 
-@keyframes App-logo-spin {
+.main-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 32px 0 #f05a2755;
+}
+
+/* Service card animations */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Smooth card expansion */
+.service-card-expand {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Backdrop blur effect */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Service card specific styles */
+.service-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.service-card.expanded {
+  z-index: 50;
+  position: relative;
+}
+
+.service-card.dimmed {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+/* Ensure proper stacking context */
+.services-grid {
+  position: relative;
+  z-index: 10;
+}
+
+.services-backdrop {
+  z-index: 40;
+}
+
+@keyframes underline-grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 30.5rem; /* 216px - matches w-54 */
+  }
+}
+
+.animate-underline-grow {
+  animation: underline-grow 1s ease-out 3.4s forwards;
+  width: 0;
 }

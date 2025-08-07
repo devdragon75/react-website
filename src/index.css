@@ -1,13 +1,52 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --color-primary: #0F2E4F;       /* Dark Blue */
+  --color-accent: #EB5A32;        /* Orange-Red */
+  --color-background: #FFFFFF;    /* Warm White */
+  --color-background-alt: #F4F5F7;/* Light Gray */
+  --color-text-secondary: #6B7280;/* Slate Gray */
+  --color-premium: #C8B07C;       /* Champagne Gold (optional) */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: serif;
+}
+
+/* Custom styles can go here */
+
+@keyframes text-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes underline-grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 13.5rem; /* 216px - matches w-54 */
+  }
+}
+
+.animate-text-fallback {
+  animation: text-fade-in 1.2s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.animate-underline-grow {
+  animation: underline-grow 0.8s ease-out 2s forwards;
+  width: 0;
 }

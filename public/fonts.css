@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'FFF Tusj';
+  src: url('%PUBLIC_URL%/fonts/FFF Tusj.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+} 
