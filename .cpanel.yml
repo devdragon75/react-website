@@ -2,6 +2,8 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home1/a73dogj1/public_html/
+    - npm install
+    - npm run build
     - /bin/cp -R build/* $DEPLOYPATH
     - /bin/cp deploy.sh $DEPLOYPATH
     - /bin/chmod +x $DEPLOYPATH/deploy.sh
