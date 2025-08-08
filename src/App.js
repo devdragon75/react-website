@@ -1,4 +1,7 @@
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+// Test auto-deployment - cPanel Git integration
 import Header from './Header';
 import Hero from './Hero';
 import About from './About';
@@ -15,8 +18,6 @@ import TermsOfService from './TermsOfService';
 import CookiePolicy from './CookiePolicy';
 import CookieConsent from './CookieConsent';
 import ImageProtection from './ImageProtection';
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 function HomePage({ heroFixed, isLoading }) {
   return (
